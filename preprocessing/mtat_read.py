@@ -11,13 +11,13 @@ class Processor:
 		self.fs = 16000
 
 	def get_paths(self, data_path):
-		self.files = glob.glob(os.path.join(data_path, 'mtat', 'mp3', '*/*.mp3'))
+		self.files = glob.glob(os.path.join(data_path, 'mtat', 'wav', '*.wav'))
 		self.npy_path = os.path.join(data_path, 'mtat', 'npy')
 		if not os.path.exists(self.npy_path):
 			os.makedirs(self.npy_path)
 
 	def get_npy(self, fn):
-                x, sr = librosa.core.load(fn, sr=self.fs)
+		x, sr = librosa.core.load(fn, sr=self.fs)
 		return x
 
 	def iterate(self, data_path):
